@@ -1,7 +1,17 @@
-$(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+function onSuccess(){
+  $('#tweetSubmit').attr('disabled', '');
+    $('#tweetSubmit').css('display', 'block');
+    $('img').css('display', 'none');
+    $('input[name="tweetText"]').val(''); 
+}
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+$(document).ready(function() {
+  $(document).on('submit','#tweetSubmit',function(event){
+    var tweet = $('input[name="tweetText"]');
+    event.preventDefault();
+    $('#tweetSubmit').attr('disabled', 'disabled');
+    $('#tweetSubmit').css('display', 'none');
+    $('img').css('display', 'block');
+    $.post('/', tweet, onSuccess);
+  });
 });

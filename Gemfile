@@ -15,6 +15,7 @@ gem 'activerecord'
 
 gem 'rake'
 
+gem 'twitter'
 gem 'shotgun'
 
 group :test do
